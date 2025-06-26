@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 
 const AddTaskForm = () => {
     const [name, setName] = useState("");
@@ -27,6 +27,7 @@ const AddTaskForm = () => {
                     <MenuItem value="daily">Weekly</MenuItem>
                 </Select>
             </FormControl>
+            <Button type='submit' variant="contained" color='primary'>Contained</Button>
         </Box>
     </form>
   )
