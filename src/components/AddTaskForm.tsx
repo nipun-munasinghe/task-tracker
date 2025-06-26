@@ -1,11 +1,26 @@
 import React, { useState } from 'react'
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import useTaskStore from '../store/store';
 
 const AddTaskForm = () => {
     const [name, setName] = useState("");
     const [frequency, setFrequency] = useState<"daily" | "weekly">("daily");
+
+    const {tasks, addTask} = useTaskStore();
+
+    console.log(tasks);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if(name.trim()) {
+            addTask(name, frequency);
+            setName("");
+            setFrequency("daily");
+        }
+    }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <TextField 
                 label='Task name'

@@ -10,12 +10,24 @@ export interface Task {
 
 interface TaskState {
     tasks: Task[];
+    addTask:(name: string, frequency: "daily"|"weekly") => void;
 }
 
-const useTaskStore = create<TaskState>(() => {
+const useTaskStore = create<TaskState>((set) => {
     return {
-        tasks: []
-    }
+        tasks: [],
+        addTask: (name, frequency) => set((state) => {
+            return {
+                tasks:[...state.tasks, {
+                    id: Date.now(),
+                    name,
+                    frequency,
+                    completedDates: [],
+                    createdAt: new Date().toISOString(),
+                }],
+            };
+        }),
+    };
 });
 
 export default useTaskStore;
