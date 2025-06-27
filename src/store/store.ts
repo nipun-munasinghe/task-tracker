@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { devtools } from 'zustand/middleware';
 
 export interface Task {
     id: number;
@@ -13,7 +14,8 @@ interface TaskState {
     addTask:(name: string, frequency: "daily"|"weekly") => void;
 }
 
-const useTaskStore = create<TaskState>((set) => {
+const useTaskStore = create<TaskState>()(
+    devtools((set) => {
     return {
         tasks: [],
         addTask: (name, frequency) => set((state) => {
@@ -28,6 +30,6 @@ const useTaskStore = create<TaskState>((set) => {
             };
         }),
     };
-});
+}));
 
 export default useTaskStore;

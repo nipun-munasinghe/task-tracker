@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from '@mui/material';
 import './App.css'
 import useTaskStore from './store/store';
+import TaskList from './components/TaskList';
 import AddTaskForm from './components/addTaskForm';
 
 function App() {
@@ -13,10 +14,8 @@ function App() {
         <Typography variant='h2' component='h1' gutterBottom align='center'>
           Task Tracker
         </Typography>
-        {/* form */}
         <AddTaskForm/>
-        {/* list */}
-        {/* stats */}
+        <TaskList/>
       </Box>
     </Container>
   )
