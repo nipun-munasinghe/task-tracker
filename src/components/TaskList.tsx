@@ -4,7 +4,7 @@ import useTaskStore from '../store/store';
 import { CheckCircle, Delete as DeleteIcon } from '@mui/icons-material';
 
 const TaskList = () => {
-    const { tasks } = useTaskStore();
+    const { tasks, removeTask, toggleTask } = useTaskStore();
     const today = new Date().toISOString().split('T')[0];
 
     return (
@@ -35,10 +35,10 @@ const TaskList = () => {
                         </Box>
                         {/* Action Buttons */}
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
-                            <Button variant='outlined'>
+                            <Button variant='outlined' onClick={() => toggleTask(task.id, today)}>
                                 {task.completedDates.includes(today) ? "Completed" : "Mark as Completed"}
                             </Button>
-                            <Button variant='outlined' color='error' startIcon={<DeleteIcon />}>
+                            <Button variant='outlined' color='error' startIcon={<DeleteIcon />} onClick={() => removeTask(task.id)}>
                                 Remove
                             </Button>
                         </Box>

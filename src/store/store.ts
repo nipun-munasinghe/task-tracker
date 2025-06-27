@@ -12,6 +12,8 @@ export interface Task {
 interface TaskState {
     tasks: Task[];
     addTask:(name: string, frequency: "daily"|"weekly") => void;
+    removeTask: (id: number) => void;
+    toggleTask: (id: number, date: string) => void;
 }
 
 const useTaskStore = create<TaskState>()(
@@ -29,6 +31,20 @@ const useTaskStore = create<TaskState>()(
                 }],
             };
         }),
+        removeTask: (id) => set((state) => ({
+            tasks: state.tasks.filter((task) => task.id !== id),
+        })),
+        toggleTask: (id, date) => set((state) => ({
+            tasks: state.tasks.map((task) => task.id === id
+                ? {
+                    ...task,
+                    completedDates: task.completedDates.includes(date)
+                        ? task.completedDates.filter((d) => d !== date)
+                        : [...task.completedDates, date],
+                }
+                : task
+            )
+        }))
     };
 }));
 
