@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 
 export interface Task {
     id: number;
@@ -17,7 +17,7 @@ interface TaskState {
 }
 
 const useTaskStore = create<TaskState>()(
-    devtools((set) => {
+    devtools(persist((set) => {
     return {
         tasks: [],
         addTask: (name, frequency) => set((state) => {
@@ -46,6 +46,9 @@ const useTaskStore = create<TaskState>()(
             )
         }))
     };
-}));
+}, {
+    name: 'tasks-local'
+}
+)));
 
 export default useTaskStore;
