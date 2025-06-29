@@ -40,7 +40,7 @@ http://localhost:3000
 
 ## Screenshots
 
-*Add screenshots of your app here if desired.*
+![Task Tracker Page](public/task-tracker.png)
 
 ---
 
