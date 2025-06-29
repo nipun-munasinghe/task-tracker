@@ -1,69 +1,47 @@
-# React + TypeScript + Vite
+# Task Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple task tracker application built with React, Zustand, and Material UI. Easily add, view, and manage your daily and weekly tasks.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Add tasks:** Enter a task name and select its frequency (daily or weekly).
+- **View tasks:** See all your active tasks in a responsive list.
+- **Mark as completed:** (Feature in progress) Mark tasks as completed on the current day.
+- **Remove tasks:** (Feature in progress) Remove tasks from your list.
+- **Responsive design:** Task list and forms adapt to different screen sizes.
 
-## Expanding the ESLint configuration
+## How to Run the App
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clone or download** the repository.
+2. **Install dependencies** by running:
+```bash
+npm install
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. **Start the development server**:
+```bash
+npm run dev
 ```
+4. **Open your browser** and go to:
+http://localhost:3000
+
+## Usage
+
+- **Add a task:** Fill in the form at the top of the page and click "Add Task".
+- **View tasks:** All tasks are displayed in a list below the form.
+- **Mark as completed:** (Coming soon) Click the "Mark as Completed" button.
+- **Remove a task:** (Coming soon) Click the "Remove" button.
+
+## Dependencies
+
+- React
+- Zustand (state management)
+- Material UI (UI components)
+- TypeScript (optional, if used)
+
+## Screenshots
+
+*Add screenshots of your app here if desired.*
+
+---
+
+**Note:** Features such as marking tasks as completed and removing tasks are not fully implemented yet.
