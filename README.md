@@ -43,5 +43,3 @@ http://localhost:3000
 ![Task Tracker Page](public/task-tracker.png)
 
 ---
-
-**Note:** Features such as marking tasks as completed and removing tasks are not fully implemented yet.
