@@ -6,9 +6,7 @@ const AddTaskForm = () => {
     const [name, setName] = useState("");
     const [frequency, setFrequency] = useState<"daily" | "weekly">("daily");
 
-    const {tasks, addTask} = useTaskStore();
-
-    console.log(tasks);
+    const {addTask} = useTaskStore();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,28 +19,32 @@ const AddTaskForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mb: 4 }}>
                 <TextField 
                     label='Task name'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder='Enter task name'
                     fullWidth
+                    color="secondary"
                 />
                 <FormControl fullWidth>
-                    <InputLabel>Frequency</InputLabel>
+                    <InputLabel color="secondary">Frequency</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={frequency}
                         label="Frequency"
                         onChange={(e) => setFrequency(e.target.value as "daily" | "weekly")}
+                        color="secondary"
                     >
                         <MenuItem value="daily">Daily</MenuItem>
                         <MenuItem value="weekly">Weekly</MenuItem>
                     </Select>
                 </FormControl>
-                <Button type='submit' variant="contained" color='primary'>Add Task</Button>
+                <Button type='submit' variant="contained" color="secondary" fullWidth sx={{ py: 1.5 }}>
+                    Add Task
+                </Button>
             </Box>
         </form>
     )

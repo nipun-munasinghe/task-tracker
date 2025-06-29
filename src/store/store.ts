@@ -11,30 +11,27 @@ export interface Task {
 
 interface TaskState {
     tasks: Task[];
-    addTask:(name: string, frequency: "daily"|"weekly") => void;
+    addTask: (name: string, frequency: "daily"|"weekly") => void;
     removeTask: (id: number) => void;
-    toggleTask: (id: number, date: string) => void;
+    toggle1Task: (id: number, date: string) => void;
 }
 
-const useTaskStore = create<TaskState>()(
-    devtools(persist((set) => {
-    return {
+const use1TaskStore = create<TaskState>()(
+    devtools(persist((set) => ({
         tasks: [],
-        addTask: (name, frequency) => set((state) => {
-            return {
-                tasks:[...state.tasks, {
-                    id: Date.now(),
-                    name,
-                    frequency,
-                    completedDates: [],
-                    createdAt: new Date().toISOString(),
-                }],
-            };
-        }),
+        addTask: (name, frequency) => set((state) => ({
+            tasks: [...state.tasks, {
+                id: Date.now(),
+                name,
+                frequency,
+                completedDates: [],
+                createdAt: new Date().toISOString(),
+            }],
+        })),
         removeTask: (id) => set((state) => ({
             tasks: state.tasks.filter((task) => task.id !== id),
         })),
-        toggleTask: (id, date) => set((state) => ({
+        toggle1Task: (id, date) => set((state) => ({
             tasks: state.tasks.map((task) => task.id === id
                 ? {
                     ...task,
@@ -44,11 +41,10 @@ const useTaskStore = create<TaskState>()(
                 }
                 : task
             )
-        }))
-    };
-}, {
-    name: 'tasks-local'
-}
+        })),
+    }), {
+        name: 'tasks-local'
+    }
 )));
 
-export default useTaskStore;
+export default use1TaskStore;
