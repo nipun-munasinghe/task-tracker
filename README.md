@@ -36,7 +36,7 @@ http://localhost:3000
 - React
 - Zustand (state management)
 - Material UI (UI components)
-- TypeScript (optional, if used)
+- TypeScript
 
 ## Screenshots
 
